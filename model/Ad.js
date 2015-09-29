@@ -1,6 +1,8 @@
-"use strict";
+'use strict';
 
-// Import Mongoose
+/**
+ * Module dependencies.
+ */
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
@@ -11,8 +13,28 @@ var adSchema = new Schema({
     price: Number,
     typeMoney: {type:String, enum:['euro','dollar']},
     photo: String,
-    tags: {type:[String], enum: ['work', 'lifestyle', 'motor', 'mobile']}
+    tags: {type:[String], enum: ['work', 'lifestyle', 'motor', 'mobile']},
 });
+
+adSchema.statics.list = function(filters){
+
+    var promise = new Promise(function(result, reject){
+        var query = Ad.find(filters);
+
+        query.sort('name');
+
+        query.exec(function(err,rows){
+            if(err){
+                reject(err);
+            }else{
+                result(rows);
+            }
+        });
+    });
+    return promise;
+
+};
+
 
 // Save AdSchema in Mongoose
 var Ad =  mongoose.model('Ad', adSchema);
