@@ -1,0 +1,15 @@
+[{
+  "name": "Iphone 6s",
+  "typeAd": "sell",
+  "price": 1079,
+  "typeMoney":"euro",
+  "photo": "Iphone_6s.jpg",
+  "tags": ["mobile"]
+},{
+  "name": "Yamaha YZF-R 125",
+  "typeAd": "sell",
+  "price": 1079,
+  "typeMoney":"euro",
+  "photo": "yamaha_yzf_r_125.jpg",
+  "tags": ["motor"]
+}]
