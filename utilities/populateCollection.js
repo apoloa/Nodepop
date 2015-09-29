@@ -1,7 +1,12 @@
-"use strict";
+'use strict';
 
 var fs = require('fs');
 
+/**
+ * This function remove a collection of MongoDB
+ * @param collection The collection to remove
+ * @returns {Promise} Promise with the collection removed or an error
+ */
 function removeCollection(collection) {
     console.log("Remove Collection", collection.name);
     var promise = new Promise(function (result, reject) {
@@ -21,6 +26,11 @@ function removeCollection(collection) {
     return promise;
 }
 
+/**
+ * This function read a file and returns a promise
+ * @param file Path of the file
+ * @returns {Promise} Promise with the content of the file or an error
+ */
 function readFile(file) {
     console.log("Reading File", file);
     var promise = new Promise(function (resolve, reject) {
@@ -34,6 +44,11 @@ function readFile(file) {
     return promise;
 }
 
+/**
+ *
+ * @param data
+ * @returns {Promise}
+ */
 function parseDataToJson(data) {
     var promise = new Promise(function (resolve, reject) {
         try {
@@ -47,6 +62,12 @@ function parseDataToJson(data) {
     return promise;
 }
 
+/**
+ *
+ * @param arJson
+ * @param collection
+ * @returns {Promise}
+ */
 function insertJSON(arJson, collection) {
     console.log("Inserting json in DB");
     var promise = new Promise(function (resolve, reject) {
@@ -67,7 +88,12 @@ function insertJSON(arJson, collection) {
     return promise;
 }
 
-
+/**
+ *
+ * @param collection
+ * @param file
+ * @returns {Promise}
+ */
 var populateCollection = function (collection, file) {
     var promise = new Promise(function (results, reject) {
         removeCollection(collection)
@@ -89,5 +115,8 @@ var populateCollection = function (collection, file) {
     return promise;
 };
 
-// Export the module
+/**
+ * Export module to use in other modules
+ * @type {Function} That can populate Collection in MongoDB
+ */
 module.exports = populateCollection;

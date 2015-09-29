@@ -2,7 +2,7 @@
 
 require('../lib/mongooseConnector');
 var Ad = require('../model/Ad');
-var Error = require('../model/Error');
+var Error = require('../model/ErrorMessage');
 var PushToken = require('../model/PushToken');
 var User = require('../model/User');
 
