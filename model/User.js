@@ -11,6 +11,6 @@ var userSchema = new Schema({
 });
 
 // Save UserSchema to Mongoose
-var Usuario = mongoose.model('Usuario', userSchema);
+var User = mongoose.model('User', userSchema);
 
-module.exports = Usuario;
+module.exports = User;

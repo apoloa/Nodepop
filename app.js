@@ -14,14 +14,10 @@ require('./model/PushToken');
 require('./model/User');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var users = require('./routes/apiV1/users');
 var ads = require('./routes/apiV1/ads');
 
 var app = express();
-
-
-var sha512 = require('js-sha512').sha512;
-console.log(sha512("hola"));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -36,7 +32,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/apiV1/users', users);
 app.use('/apiV1/ads', ads);
 
 // catch 404 and forward to error handler
