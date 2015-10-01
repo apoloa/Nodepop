@@ -17,7 +17,7 @@ console.log(errorManager);
 
 var users = require('./routes/apiV1/users');
 var ads = require('./routes/apiV1/ads');
-var authenticate = require('./routes/apiV1/authenticate');
+//var authenticate = require('./routes/apiV1/authenticate');
 
 var app = express();
 
@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/apiV1/users', users);
 app.use('/apiV1/ads', ads);
-app.use('/apiV1/authenticate', authenticate);
+//app.use('/apiV1/authenticate', authenticate);
 
 app.use('/apiV1',errorManager);
 
