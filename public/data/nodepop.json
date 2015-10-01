@@ -1,0 +1,14 @@
+{
+  "name": "Nodepop API",
+  "protocol" : "rest",
+  "publicPath": "/apiV1",
+  "version": "1.0",
+  "resources": {
+    "Ads Methods":{
+      "methods": {
+
+      }
+    }
+  }
+
+}
