@@ -1,9 +1,7 @@
 "use strict";
 
-require('../lib/mongooseConnector');
+
 var Ad = require('../model/Ad');
-var Error = require('../model/ErrorMessage');
-var PushToken = require('../model/PushToken');
 var User = require('../model/User');
 
 var populateCollection = require('./populateCollection');
