@@ -1,13 +1,13 @@
-language:node_js
+language: node_js
 
 services:
- - mongodb
+  - mongodb
 
 before_script:
- - npm install --dev
- - npm run populateDB
- - npm run initErrorMessages
+  - npm install --dev
+  - npm run populateDB
+  - npm run initErrorMessages
 
 node_js:
- - "4.1"
- - "4.0"
+  - "4.1"
+  - "4.0"
