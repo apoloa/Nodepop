@@ -12,10 +12,12 @@ require('./model/Ad');
 require('./model/ErrorMessage');
 require('./model/PushToken');
 require('./model/User');
+var errorManager = require('./lib/errorManager');
+console.log(errorManager);
 
-var routes = require('./routes/index');
 var users = require('./routes/apiV1/users');
 var ads = require('./routes/apiV1/ads');
+var authenticate = require('./routes/apiV1/authenticate');
 
 var app = express();
 
@@ -31,9 +33,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
 app.use('/apiV1/users', users);
 app.use('/apiV1/ads', ads);
+app.use('/apiV1/authenticate', authenticate);
+
+app.use('/apiV1',errorManager);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

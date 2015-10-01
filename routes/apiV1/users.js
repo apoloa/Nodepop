@@ -9,21 +9,30 @@ var User = mongoose.model('User');
 var sha512 = require('js-sha512').sha512;
 var validator = require('validator');
 
+/**
+ * @function /users
+ * @implements POST
+ * @property {string} name
+ * @property {string} email
+ * @property {string} password
+ * @description Register a new user in the database
+ * @return {object} Object with {success:{true:false} error: {id,status,message} or user}
+ */
 router.post('/', function(req,res,next){
 
     // Check the data received
     if(!req.body.name){
-        return next();
+        return next(express.errorMessageEnum.NAME_REQUIRED);
     }
     if(!req.body.email){
-        return next();
+        return next(express.errorMessageEnum.EMAIL_REQUIRED);
     }
     if(!validator.isEmail(req.body.email)){
-        return next();
+        return next(express.errorMessageEnum.EMAIL_IS_NOT_VALID);
 
     }
     if(!req.body.password){
-        return next();
+        return next(express.errorMessageEnum.PASSWORD_REQUIRED);
     }
 
     // First check is user exists.
@@ -35,10 +44,12 @@ router.post('/', function(req,res,next){
        if(err){
            console.log(err);
            if(err.code === 11000){
-               return next(err.code);
+               console.log('The email %s was already registered',req.body.email);
+               return next(express.errorMessageEnum.EMAIL_ALREADY_REGISTERED);
            }
            return next(err);
        }
+        res.status(201);
         res.json({success:true, user:created});
     });
 });

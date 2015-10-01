@@ -7,6 +7,7 @@ var mongoose = require('mongoose');
 var Ad = mongoose.model('Ad');
 
 router.get('/', function(req,res,next){
+    console.log(req.headers);
     Ad.list({})
         .then(function(rows){
             res.json({success:true, data: rows});
@@ -14,6 +15,7 @@ router.get('/', function(req,res,next){
         .catch(function(err){
             next(err);
         });
+
 });
 
 module.exports = router;
