@@ -1,0 +1,31 @@
+[{
+  "identifier": "EMAIL_REQUIRED",
+  "statusCode": "400",
+  "messages": [{
+    "language": "es",
+    "message": "Esta petición requiere un email"
+  },{
+    "language": "eng",
+    "message": "This request require a mail"
+  }]
+},{
+  "identifier": "NAME_REQUIRED",
+  "statusCode": "400",
+  "messages": [{
+    "language": "es",
+    "message": "Esta petición requiere un nombre"
+  },{
+    "language": "eng",
+    "message": "This request require a name"
+  }]
+},{
+  "identifier": "PASSWORD_REQUIRED",
+  "statusCode": "400",
+  "messages": [{
+    "language": "es",
+    "message": "Esta petición requiere una contraseña"
+  },{
+    "language": "eng",
+    "message": "This request require a password"
+  }]
+}]
