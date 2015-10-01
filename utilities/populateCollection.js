@@ -71,8 +71,8 @@ function parseDataToJson(data) {
 function insertJSON(arJson, collection) {
     console.log("Inserting json in DB");
     var promise = new Promise(function (resolve, reject) {
-        var data = new Array(arJson.length);
-        arJson.forEach(function (element) {
+        var data = [];
+        arJson.forEach(function (element, index) {
             var objToInsert = new collection(element);
 
             objToInsert.save(function (err, created) {
@@ -81,6 +81,10 @@ function insertJSON(arJson, collection) {
                 }
 
                 data.push(created);
+
+                if(index == arJson.length -1){
+                    resolve(data);
+                }
             });
         });
 
@@ -107,7 +111,9 @@ var populateCollection = function (collection, file) {
             function (res) {
                 return insertJSON(res, collection);
             }
-        )
+        ).then(function(data){
+                results(data);
+            })
             .catch(function (err) {
                 reject(err);
             });

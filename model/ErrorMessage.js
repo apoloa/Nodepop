@@ -61,14 +61,15 @@ errorMessageSchema.statics.listIdentifiers = function(){
 };
 
 errorMessageSchema.statics.getErrorMessage = function(id,lang){
+    console.log(lang);
     var promise = new Promise(function(result, reject){
-        var query = ErrorMessage.find(
-            {'__id':id},
-            {'messages':{$elemMatch:{language:lang}}}
+        var query = ErrorMessage.findOne(
+            {'_id':id},
+            {'messages':{$elemMatch: {language:lang}}}
         );
         query.sort('identifier');
         // Only these fields will be returned.
-        query.select('identifier statusCode messages');
+        query.select('identifier statusCode messages.message');
         query.exec(function(err,rows){
             if(err){
                 reject(err);

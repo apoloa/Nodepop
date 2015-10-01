@@ -5,8 +5,18 @@
     "language": "es",
     "message": "Esta petición requiere un email"
   },{
-    "language": "eng",
+    "language": "en",
     "message": "This request require a mail"
+  }]
+},{
+  "identifier": "EMAIL_IS_NOT_VALID",
+  "statusCode": "400",
+  "messages": [{
+    "language": "es",
+    "message": "La direccion de correo electronico introducida no es valida"
+  },{
+    "language": "en",
+    "message": "Email is not valid"
   }]
 },{
   "identifier": "NAME_REQUIRED",
@@ -15,7 +25,7 @@
     "language": "es",
     "message": "Esta petición requiere un nombre"
   },{
-    "language": "eng",
+    "language": "en",
     "message": "This request require a name"
   }]
 },{
@@ -25,7 +35,17 @@
     "language": "es",
     "message": "Esta petición requiere una contraseña"
   },{
-    "language": "eng",
+    "language": "en",
     "message": "This request require a password"
+  }]
+},{
+  "identifier": "EMAIL_ALREADY_REGISTERED",
+  "statusCode": "400",
+  "messages": [{
+    "language": "es",
+    "message": "Este email ya ha sido registrado"
+  },{
+    "language": "en",
+    "message": "Email already registered"
   }]
 }]
