@@ -42,9 +42,8 @@ router.post('/', function(req,res,next){
     user.password = sha512(user.password);
     user.save(function (err, created) {
        if(err){
-           console.log(err);
            if(err.code === 11000){
-               console.log('The email %s was already registered',req.body.email);
+               console.warn('WARN: The email %s was already registered',req.body.email);
                return next(express.errorMessageEnum.EMAIL_ALREADY_REGISTERED);
            }
            return next(err);
