@@ -3,19 +3,20 @@
 var fs = require('fs');
 
 /**
- * This function remove a collection of MongoDB
- * @param collection The collection to remove
+ * This function remove a collection of MongoDB.
+ *
+ * @param {Object} collection - The collection to remove
  * @returns {Promise} Promise with the collection removed or an error
  */
 function removeCollection(collection) {
-    console.log("Remove Collection", collection.name);
-    var promise = new Promise(function (result, reject) {
-        collection.collection.drop(function (err) {
-            if(err){
-                if(err.message === 'ns not found'){
-                    console.warn("Database not exists, ignoring delete");
+    console.log('Remove Collection', collection.name);
+    return new Promise(function(result, reject) {
+        collection.collection.drop(function(err) {
+            if (err) {
+                if (err.message === 'ns not found') {
+                    console.warn('Database not exists, ignoring delete');
                     result(collection);
-                }else{
+                } else {
                     reject(err);
                 }
             }else {
@@ -23,106 +24,105 @@ function removeCollection(collection) {
             }
         });
     });
-    return promise;
 }
 
 /**
- * This function read a file and returns a promise
- * @param file Path of the file
+ * This function read a file and returns a promise.
+ *
+ * @param {String} file - Path of the file
  * @returns {Promise} Promise with the content of the file or an error
  */
 function readFile(file) {
-    console.log("Reading File", file);
-    var promise = new Promise(function (resolve, reject) {
-        fs.readFile(file, {encoding: 'utf8'}, function (err, data) {
+    console.log('Reading File', file);
+    return new Promise(function(resolve, reject) {
+        fs.readFile(file, {encoding: 'utf8'}, function(err, data) {
             if (err) {
                 reject(err);
             }
             resolve(data);
         });
     });
-    return promise;
 }
 
 /**
+ * This function convert from JSON to Object.
  *
- * @param data
- * @returns {Promise}
- */
-function parseDataToJson(data) {
-    var promise = new Promise(function (resolve, reject) {
+ * @param {String} data String with the json to convert.
+ * @returns {Promise} Promise with the content of the data converted in Object.
+ * */
+function parseDataFromJson(data) {
+    return new Promise(function(resolve, reject) {
         try {
-            console.log("Parsing data to JSON");
+            console.log('Parsing data to JSON');
             var dataParsed = JSON.parse(data);
             resolve(dataParsed);
         } catch (err) {
             reject(err);
         }
     });
-    return promise;
 }
 
 /**
+ * This function can be insert Object in Database.
  *
- * @param arJson
- * @param collection
+ * @param {Object} object Object with the data to insert in collection.
+ * @param {Object} Collection Object that represents a mongoose collection.
  * @returns {Promise}
  */
-function insertJSON(arJson, collection) {
-    console.log("Inserting json in DB");
-    var promise = new Promise(function (resolve, reject) {
+function insertJSON(object, Collection) {
+    console.log('Inserting json in DB');
+    return new Promise(function(resolve, reject) {
         var data = [];
-        arJson.forEach(function (element, index) {
-            var objToInsert = new collection(element);
-
-            objToInsert.save(function (err, created) {
+        object.forEach(function(element, index) {
+            var objToInsert = new Collection(element);
+            objToInsert.save(function(err, created) {
                 if (err) {
                     reject(err);
                 }
 
                 data.push(created);
 
-                if(index == arJson.length -1){
+                if (index == object.length - 1) {
                     resolve(data);
                 }
             });
         });
 
     });
-    return promise;
 }
 
 /**
+ * This function insert the content of the file in collection.
  *
- * @param collection
- * @param file
- * @returns {Promise}
+ * @param {Object} collection - Objects that represents a mongoose collection.
+ * @param {String} file - Path from the file.
+ * @returns {Promise} - A Promise with the result of populate the collection.
  */
-var populateCollection = function (collection, file) {
-    var promise = new Promise(function (results, reject) {
+var populateCollection = function(collection, file) {
+    return new Promise(function(results, reject) {
         removeCollection(collection)
             .then(
-            function (res) {
+            function() {
                 return readFile(file);
             }
         )
-            .then(parseDataToJson)
+            .then(parseDataFromJson)
             .then(
-            function (res) {
+            function(res) {
                 return insertJSON(res, collection);
             }
-        ).then(function(data){
+        ).then(function(data) {
                 results(data);
             })
-            .catch(function (err) {
+            .catch(function(err) {
                 reject(err);
             });
     });
-    return promise;
 };
 
 /**
  * Export module to use in other modules
+ *
  * @type {Function} That can populate Collection in MongoDB
  */
 module.exports = populateCollection;

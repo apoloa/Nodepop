@@ -48,4 +48,94 @@
     "language": "en",
     "message": "Email already registered"
   }]
+},{
+  "identifier": "USER_NOT_FOUND",
+  "statusCode": "401",
+  "messages": [{
+    "language": "es",
+    "message": "Usuario no encontrado"
+  },{
+    "language": "en",
+    "message": "User not found"
+  }]
+},{
+  "identifier": "INCORRECT_PASSWORD",
+  "statusCode": "401",
+  "messages": [{
+    "language": "es",
+    "message": "La contraseña incorrecta"
+  },{
+    "language": "en",
+    "message": "Incorrect password"
+  }]
+},{
+  "identifier": "ERROR_DATABASE",
+  "statusCode": "500",
+  "messages": [{
+    "language": "es",
+    "message": "Error en la base de datos"
+  },{
+    "language": "en",
+    "message": "Database error, we can't retrieve data"
+  }]
+},{
+  "identifier": "INVALID_PRICE",
+  "statusCode": "400",
+  "messages": [{
+    "language": "es",
+    "message": "El precio es invalido"
+  },{
+    "language": "en",
+    "message": "This price is invalid"
+  }]
+},{
+  "identifier": "INVALID_TOKEN",
+  "statusCode": "401",
+  "messages": [{
+    "language": "es",
+    "message": "El token proporcionado no es valido."
+  },{
+    "language": "en",
+    "message": "The provided token is not valid."
+  }]
+},{
+  "identifier": "TOKEN_REQUIRED",
+  "statusCode": "403",
+  "messages": [{
+    "language": "es",
+    "message": "Acceso no autorizado, se requiere un token"
+  },{
+    "language": "en",
+    "message": "Unauthorized access, be required a token"
+  }]
+},{
+  "identifier": "TOKENPUSH_REQUIRED",
+  "statusCode": "400",
+  "messages": [{
+    "language": "es",
+    "message": "Se requiere un token"
+  },{
+    "language": "en",
+    "message": "Be required a token"
+  }]
+},{
+  "identifier": "PLATFORM_REQUIRED",
+  "statusCode": "400",
+  "messages": [{
+    "language": "es",
+    "message": "Se requiere una plataforma"
+  },{
+    "language": "en",
+    "message": "Be required a platform"
+  }]
+},{
+  "identifier": "INVALID_PLATFORM",
+  "statusCode": "400",
+  "messages": [{
+    "language": "es",
+    "message": "Solo se admite plataformas ios o android"
+  },{
+    "language": "en",
+    "message": "Invalid platform, only use ios or android"
+  }]
 }]

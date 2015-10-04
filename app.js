@@ -2,7 +2,7 @@
 
 var express = require('express');
 var path = require('path');
-var favicon = require('serve-favicon');
+//var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -10,14 +10,13 @@ var bodyParser = require('body-parser');
 require('./lib/mongooseConnector');
 require('./model/Ad');
 require('./model/ErrorMessage');
-require('./model/PushToken');
 require('./model/User');
 var errorManager = require('./lib/errorManager');
-console.log(errorManager);
 
 var users = require('./routes/apiV1/users');
 var ads = require('./routes/apiV1/ads');
-//var authenticate = require('./routes/apiV1/authenticate');
+var authenticate = require('./routes/apiV1/authenticate');
+var tokenPush = require('./routes/apiV1/pushTokens');
 
 var app = express();
 
@@ -25,8 +24,6 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -34,8 +31,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/apiV1/users', users);
+app.use('/apiV1/users/authenticate',authenticate);
+app.use('/apiV1/users/token', tokenPush);
 app.use('/apiV1/ads', ads);
-//app.use('/apiV1/authenticate', authenticate);
 
 app.use('/apiV1', errorManager);
 

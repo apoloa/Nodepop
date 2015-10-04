@@ -12,4 +12,39 @@
   "typeMoney":"euro",
   "photo": "yamaha_yzf_r_125.jpg",
   "tags": ["motor"]
+},{
+  "name": "MacBook Pro",
+  "typeAd": "want",
+  "price": 2999,
+  "typeMoney":"euro",
+  "photo": "macbook_pro.jpg",
+  "tags": ["work","lifestyle"]
+},{
+  "name": "Bic",
+  "typeAd": "sell",
+  "price": 0.1,
+  "typeMoney":"euro",
+  "photo": "bic.jpg",
+  "tags": ["work"]
+},{
+  "name": "Máquina de Palomitas",
+  "typeAd": "sell",
+  "price": 82.69,
+  "typeMoney":"euro",
+  "photo": "maquina_de_palomitas",
+  "tags": ["lifestyle"]
+},{
+  "name": "Audi TT 2015",
+  "typeAd": "want",
+  "price": 42349,
+  "typeMoney":"euro",
+  "photo": "audi_tt_2015.jpg",
+  "tags": ["motor","lifestyle"]
+},{
+  "name": "Ferrari F12 Berlinetta",
+  "typeAd": "want",
+  "price": 309437,
+  "typeMoney":"euro",
+  "photo": "ferrar_f12_berlinetta.jpg",
+  "tags": ["motor","lifestyle"]
 }]

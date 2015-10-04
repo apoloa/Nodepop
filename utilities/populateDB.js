@@ -6,13 +6,12 @@ var User = require('../model/User');
 
 var populateCollection = require('./populateCollection');
 
-populateCollection(Ad,'utilities/AdsExample.json').then(function(res){
+populateCollection(Ad,'utilities/AdsExample.json').then(function(res) {
     console.log(res);
-    console.log("Next Collection");
     populateCollection(User,'utilities/UsersExample.json').then(function(res) {
         console.log(res);
         process.exit(0);
     });
-}).catch(function(err){
+}).catch(function(err) {
     console.error('Error to populateCollection', err);
 });
