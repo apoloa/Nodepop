@@ -1,13 +1,17 @@
 {
   "name": "Nodepop",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "dev": "NODE_PATH=$NODE_PATH:./lib DEBUG=nodepop:* PORT=3000 nodemon ./bin/www",
+    "start": "CLUSTER=true node ./bin/www",
+    "dev": "DEBUG=nodepop:* PORT=3000 nodemon ./bin/www",
+    "initAllDatabase": "npm run populateDB | npm run initErrorMessages",
     "populateDB": "node ./utilities/populateDB.js",
     "initErrorMessages": "node ./utilities/populateErrorMessaje.js",
-    "test": "mocha test/nodepop.js"
+    "test": "CLUSTER=true npm run populateDB | npm run initErrorMessages | mocha test/nodepop.js",
+    "jscs": "jscs .",
+    "jshint": "jshint .",
+    "apidoc": "apidoc -i ./routes -o public/apiDoc/"
   },
   "devDependencies": {
     "mocha": "*",

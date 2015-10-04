@@ -5,8 +5,6 @@ services:
 
 before_script:
   - npm install --dev
-  - npm run populateDB
-  - npm run initErrorMessages
 
 node_js:
   - "4.0"
