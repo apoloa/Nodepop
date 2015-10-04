@@ -11,7 +11,7 @@
     "test": "mocha test/nodepop.js",
     "jscs": "jscs .",
     "jshint": "jshint .",
-    "apidoc": "apidoc -i ./routes -o public/apiDoc/"
+    "apidoc": "apidoc -i ./routes -o public/doc/"
   },
   "devDependencies": {
     "mocha": "*",

@@ -85,4 +85,11 @@ To run test use:
 ```js
 npm test
 ```
-**IMPORTANT**:If the script tests are used overwrite database.
+**IMPORTANT**:If the script tests are use the example database
+
+## Documentation from the API
+
+For the documentation i used APIDOC, if run the aplication we can locate the documentation in the path of the aplication /docs/.
+
+```
+http://localhost:3000/docs
