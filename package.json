@@ -8,7 +8,7 @@
     "initAllDatabase": "npm run populateDB | npm run initErrorMessages",
     "populateDB": "node ./utilities/populateDB.js",
     "initErrorMessages": "node ./utilities/populateErrorMessaje.js",
-    "test": "CLUSTER=true npm run populateDB | npm run initErrorMessages | mocha test/nodepop.js",
+    "test": "npm run populateDB | npm run initErrorMessages | mocha test/nodepop.js",
     "jscs": "jscs .",
     "jshint": "jshint .",
     "apidoc": "apidoc -i ./routes -o public/apiDoc/"
