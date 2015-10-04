@@ -92,4 +92,13 @@ npm test
 For the documentation i used APIDOC, if run the aplication we can locate the documentation in the path of the aplication /docs/.
 
 ```
-http://localhost:3000/docs
+http://localhost:3000/doc
+```
+
+## Images Folder
+
+The images folder to charge the images in relative path of the data returnet from the API.
+
+```
+http://localhost:3000/ads/<name_of_image>
+```
