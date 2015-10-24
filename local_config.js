@@ -4,5 +4,5 @@ module.exports = {
         secret: 'nodepopapinodepopapi',
         expiresInMinutes: 1440  // expires in 24 hours
     },
-    mongoPath: 'mongodb://localhost/nodepop'
+    mongoDirection: 'localhost'
 };
