@@ -60,19 +60,19 @@ router.post('/', function(req, res, next) {
 
     if (!req.body.name) {
         errorValidators = new Error(express.errorMessageEnum.NAME_REQUIRED);
-        next(errorValidators);
+        return next(errorValidators);
     }
     if (!req.body.email) {
         errorValidators = new Error(express.errorMessageEnum.EMAIL_REQUIRED);
-        next(errorValidators);
+        return next(errorValidators);
     }
     if (!validator.isEmail(req.body.email)) {
         errorValidators = new Error(express.errorMessageEnum.EMAIL_IS_NOT_VALID);
-        next(errorValidators);
+        return next(errorValidators);
     }
     if (!req.body.password) {
         errorValidators = new Error(express.errorMessageEnum.PASSWORD_REQUIRED);
-        next(errorValidators);
+        return next(errorValidators);
     }
 
     // First check is user exists.
@@ -90,8 +90,9 @@ router.post('/', function(req, res, next) {
             return next(err);
         }
         res.status(201);
-        return res.json({success: true, user: created});
+        res.json({success: true, user: created});
     });
+    return;
 });
 
 module.exports = router;
