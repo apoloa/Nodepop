@@ -5,6 +5,7 @@
   "scripts": {
     "start": "CLUSTER=true node ./bin/www",
     "dev": "DEBUG=nodepop:* PORT=3000 nodemon ./bin/www",
+    "start_localhost": "LOCALHOST=true node ./bin/www",
     "initAllDatabase": "npm run populateDB | npm run initErrorMessages",
     "populateDB": "node ./utilities/populateDB.js",
     "initErrorMessages": "node ./utilities/populateErrorMessaje.js",

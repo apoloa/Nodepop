@@ -13,6 +13,7 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 var port = normalizePort(process.env.PORT || '3000');
+var localhost = process.env.LOCALHOST ? true : false;
 app.set('port', port);
 
 var cluster = (process.env.CLUSTER || false) ? true : false;
@@ -61,7 +62,11 @@ if (cluster) {
          * Listen on provided port, on all network interfaces.
          */
 
-        server.listen(port);
+        if (localhost) {
+            server.listen(port,'localhost');
+        } else {
+            server.listen(port);
+        }
         server.on('error', onError);
         server.on('listening', onListening);
     }
@@ -74,7 +79,12 @@ if (cluster) {
     /**
      * Listen on provided port, on all network interfaces.
      */
-    server.listen(port);
+    if (localhost) {
+        server.listen(port,'localhost');
+    } else {
+        server.listen(port);
+    }
+
     server.on('error', onError);
     server.on('listening', onListening);
 }
