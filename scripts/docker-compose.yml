@@ -1,0 +1,18 @@
+mongodb:
+ image: mongo
+ volumes: 
+  - /data/db:/data/db
+ ports:
+  - "27017:27017"
+
+node:
+ image: awholedev/nodepop
+ volumes:
+  - /var/www:/var/www
+ links:
+  - mongodb:mongodb
+ environment:
+  - DB=mongodb
+  - CLUSTER=true
+ ports:
+  - "3000:3000"

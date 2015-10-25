@@ -102,3 +102,44 @@ The images folder to charge the images in relative path of the data returnet fro
 ```
 http://localhost:3000/ads/<name_of_image>
 ```
+
+
+DevOps
+======
+
+The Server is running in production mode in the server:
+
+```
+creativedevelopers.es
+```
+
+Parts
+------
+
+We have 3 parts in the server:
+
+* Documentation: creativedevelopers.es
+* API: creativedevelopers.es
+* Information: ip
+
+Installation in a server
+------------------------
+
+We have a Docker-Compose to run in a server with a MongoDB and we have a simple docker image to run in a server without 
+MongoDB. In these repo in the folder scripts we have the docker-compose.yml.
+
+The docker image run with pm2. http://pm2.keymetrics.io/
+
+Structure Server
+----------------
+The server has 3 parts:
+
+* nginx: Inverse-proxy with the node. This server do inverse proxy with the api and serve the static files. 
+* node-pm2 (docker-composite): Docker container with pm2 and node. We have a volume in www folder (var) and the 
+next enviroments:
+ * DB = link or ip from the database. (default:localhost)
+ * CLUSTER = boolean that run in cluster mode (default:false)
+ * LOCALHOST = boolean that run api only in the 127.0.0.1 interface. (default:false)
+ * PORT = int that run in the port (default:3000)
+* mongodb (docker-composite): Docker containter with the mongodb. We have a volume for data folder. 
+
